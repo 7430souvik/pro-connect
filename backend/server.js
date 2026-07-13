@@ -1,0 +1,40 @@
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+import mongoose from "mongoose";
+import postRoutes from "./routes/post.routes.js"
+import  userRoutes from "./routes/user.routes.js"
+
+dotenv.config();
+
+const app= express();
+
+app.use(cors());
+app.use(express.json());
+
+app.post("/test", (req, res) => {
+    console.log("TEST BODY:", req.body);
+    res.json(req.body);
+});
+
+app.use(userRoutes);
+
+app.use(postRoutes);
+app.use(express.static("uploads"));
+
+
+
+const start= async()=>{
+
+    const connectDB= await mongoose.connect("MONGO_URL");
+
+    app.listen(9090,()=>{
+        console.log("server is running on port 9090." )
+    });
+
+
+}
+
+start();
+
+
