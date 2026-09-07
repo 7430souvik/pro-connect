@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { connection } from "next/server";
-import { getAboutUser, getAllUsers, getConnetionRequest, getMyConnectionRequests, loginUser, registerUser } from "../../action/authAction";
+import { getAboutUser, getAllUsers, getConnectionRequest, getMyConnectionRequests, loginUser, registerUser } from "../../action/authAction";
 import { register } from "next/dist/next-devtools/userspace/pages/pages-dev-overlay-setup";
 
 
@@ -92,7 +92,7 @@ const authslice = createSlice({
         .addCase(getConnetionRequest.fulfilled, (state,action) =>{
             state.connections = action.payload
         })
-        .addCase(getConnetionRequest.rejected, (state,action) =>{
+        .addCase(getConnectionRequest.rejected, (state,action) =>{
             state.message = action.payload
         })
         .addCase(getMyConnectionRequests.fulfilled, (state,action) =>{
