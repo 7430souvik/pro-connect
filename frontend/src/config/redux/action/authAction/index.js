@@ -122,10 +122,10 @@ export const sendConnectionRequest = createAsyncThunk(
 )
 
 export const getConnetionRequest = createAsyncThunk(
-    "user/get_connection_requests",
+    "user/getConnectionRequests",
     async (user, thunkAPI) => {
         try{
-            const response = await clientServer.get("/user/getConnectionRequests", {
+            const response = await clientServer.get("/user/get_connection_requests", {
                 params: {
                     token: user.token
                 }
