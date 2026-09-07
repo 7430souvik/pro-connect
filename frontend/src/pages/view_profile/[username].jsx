@@ -18,6 +18,10 @@ export default function ViewProfilePage({userProfile}) {
 
   const [userPosts, setUserPosts] = useState([]);
   const [isCurrentUserInConnection, setIsCurrentUserInConnection] =useState(false);
+  const [isConnectionNull, setIsConnectionNull] = useState(true);
+
+
+
 
   const getUsersPost = async()=>{
     await dispatch(getAllPosts());
@@ -37,7 +41,11 @@ export default function ViewProfilePage({userProfile}) {
     console.log(authState.connections, userProfile.userId._id)
 
     if(authState.connections.some(user => user.connectionId._id === userProfile.userId._id)){
-      setIsCurrentUserInConnection(true);
+      setIsCurrentUserInConnection(true)
+      if(authState.connections.find(user => user.connectionId._id = userProfile.userId._id).status_accepted === true){
+        setIsConnectionNull(false);
+      }
+
     }
   },[authState.connections])
 
@@ -85,7 +93,7 @@ export default function ViewProfilePage({userProfile}) {
                   </div>
 
                   {isCurrentUserInConnection ?
-                      <button className={styles.connectedButton}>Connected</button>
+                      <button className={styles.connectedButton}>{isConnectionNull ? "pending":"connected"}</button>
                     :
                     <button onClick={()=>{
                       dispatch(sendConnectionRequest({token: localStorage.getItem("token"),user_id: userProfile.userId._id }))
