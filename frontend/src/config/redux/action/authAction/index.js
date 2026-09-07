@@ -109,7 +109,7 @@ export const sendConnectionRequest = createAsyncThunk(
 
             })
 
-            thunkAPI.dispatch(getConnetionRequest({ token: user.token }))
+            thunkAPI.dispatch(getConnectionRequest({ token: user.token }))
 
 
             return thunkAPI.fulfillWithValue(response.data);
