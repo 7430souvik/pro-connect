@@ -122,7 +122,7 @@ export const sendConnectionRequest = createAsyncThunk(
 )
 
 export const getConnetionRequest = createAsyncThunk(
-    "user/getConnectionrequests",
+    "user/get_connection_requests",
     async (user, thunkAPI) => {
         try{
             const response = await clientServer.get("/user/getConnectionRequests", {
