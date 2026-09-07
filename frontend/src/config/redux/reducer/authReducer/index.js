@@ -89,7 +89,7 @@ const authslice = createSlice({
             state.all_profiles_fetched= true;
             state.all_users= action.payload.profiles;
         })
-        .addCase(getConnectionsRequest.fulfilled, (state,action) =>{
+        .addCase(getConnectionRequest.fulfilled, (state,action) =>{
             state.connections = action.payload
         })
         .addCase(getConnetionRequest.rejected, (state,action) =>{
