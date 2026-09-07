@@ -121,7 +121,7 @@ export const sendConnectionRequest = createAsyncThunk(
     }
 )
 
-export const getConnetionRequest = createAsyncThunk(
+export const getConnectionRequest = createAsyncThunk(
     "user/getConnectionRequests",
     async (user, thunkAPI) => {
         try{
