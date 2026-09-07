@@ -7,6 +7,7 @@ import styles from "./index.module.css";
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllPosts } from '@/config/redux/action/postAction';
+import { sendConnectionRequest } from '@/config/redux/action/authAction';
 
 export default function ViewProfilePage({userProfile}) {
 
